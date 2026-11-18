@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8"><title>Azelle — 2. Nega aynan Azelle?</title>
+<link rel="stylesheet" href="brand/brand.css">
+<style>
+#logoTop{position:absolute;left:90px;top:260px;transform:scale(.62);transform-origin:50% 0;animation:fadeIn .8s ease .3s both;--sd:1.2s}
+#title{position:absolute;top:760px;left:0;right:0;text-align:center}
+#title .a{font-family:Vibes;font-size:160px;color:var(--em);animation:wipe .9s ease .8s both, outUp .4s ease 2.6s forwards}
+#title .b{font-family:Playfair;font-weight:700;font-size:170px;line-height:1.05;animation:bang .9s cubic-bezier(.2,1.6,.4,1) 1.3s both, shimmer 2.5s linear infinite, outUp .4s ease 2.65s forwards}
+.rc{position:absolute;left:110px;top:660px;width:860px;height:760px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  perspective:1200px;opacity:0;animation:flipIn .7s cubic-bezier(.2,1,.3,1) var(--in) both, flipOut .45s ease-in var(--out) forwards}
+@keyframes flipIn{from{opacity:0;transform:perspective(1400px) rotateY(80deg) scale(.9)}to{opacity:1;transform:none}}
+@keyframes flipOut{from{opacity:1;transform:none}to{opacity:0;transform:translateX(-380px) rotate(-8deg)}}
+.rc .num{font-family:Playfair;font-weight:700;font-size:150px;line-height:1}
+.rc .ic{margin:26px 0 34px;width:170px;height:170px}
+.rc .ic svg{width:96px;height:96px}
+.rc h3{font-family:Playfair;font-weight:700;font-size:72px;color:var(--em);line-height:1.1}
+.rc p{font-size:40px;color:#8a6a55;margin-top:18px;padding:0 50px}
+#dots{position:absolute;top:1470px;left:0;right:0;display:flex;justify-content:center;gap:22px;animation:fadeIn .4s ease 2.9s both, fadeOut .4s ease 12.0s forwards}
+#dots i{width:22px;height:22px;border-radius:50%;background:#e7c9cc;position:relative;overflow:hidden}
+#dots i::after{content:"";position:absolute;inset:0;background:var(--em);border-radius:50%;transform:scale(0);animation:pop .4s ease var(--t) both}
+#end{position:absolute;top:780px;left:0;right:0;text-align:center}
+#end .a{font-family:Vibes;font-size:150px;color:var(--em);animation:wipe 1s ease 12.4s both}
+#end .b{font-family:Playfair;font-weight:700;font-size:100px;line-height:1.1;animation:bang .8s cubic-bezier(.2,1.6,.4,1) 12.9s both, shimmer 2.5s linear infinite}
+#end .pill{margin-top:50px;animation:pop .7s ease 13.4s both}
+#end .c{margin-top:34px;font-size:36px;color:#8a6a55;letter-spacing:2px;animation:rise .7s ease 13.8s both}
+</style></head>
+<body><div id="stage">
+  <div id="petals" class="abs"></div>
+  <div id="tTR" class="tul"><img src="brand/tulips_tr.png"></div>
+  <div id="tBL" class="tul"><img src="brand/tulips_bl.png"></div>
+  <div id="logoTop" class="logo"><img src="brand/logo.png"><div class="shine"></div></div>
+  <div id="title"><div class="a">Nega aynan</div><div class="b goldtext">AZELLE?</div></div>
+
+  <div class="rc card" style="--in:2.9s;--out:4.85s">
+    <div class="num goldtext">01</div>
+    <div class="ic"><svg viewBox="0 0 64 64"><path d="M24 6 L27 16 M40 6 L37 16 M27 16 Q32 20 37 16 L39 28 L50 58 L14 58 L25 28 Z M25 28 L39 28"/></svg></div>
+    <h3>Yangi kolleksiyalar</h3><p>Eng so’nggi moda trendlari doim siz uchun</p></div>
+  <div class="rc card" style="--in:5.15s;--out:7.1s">
+    <div class="num goldtext">02</div>
+    <div class="ic"><svg viewBox="0 0 64 64"><path d="M32 6 L38 22 L56 23 L42 34 L47 52 L32 42 L17 52 L22 34 L8 23 L26 22 Z"/></svg></div>
+    <h3>Sifatli mahsulotlar</h3><p>Har bir buyum e’tibor bilan tanlangan</p></div>
+  <div class="rc card" style="--in:7.4s;--out:9.35s">
+    <div class="num goldtext">03</div>
+    <div class="ic"><svg viewBox="0 0 64 64"><path d="M10 24 H54 L50 58 H14 Z M22 24 V18 A10 10 0 0 1 42 18 V24 M26 40 L31 45 L40 35"/></svg></div>
+    <h3>Hamyonbop narxlar</h3><p>Chiroyli ko’rinish — qulay narxda</p></div>
+  <div class="rc card" style="--in:9.65s;--out:11.8s">
+    <div class="num goldtext">04</div>
+    <div class="ic"><svg viewBox="0 0 64 64"><path d="M4 16 H38 V44 H4 Z M38 26 H50 L58 36 V44 H38 M16 50 A5 5 0 1 0 16.01 50 M48 50 A5 5 0 1 0 48.01 50"/></svg></div>
+    <h3>Yetkazib berish</h3><p>Butun O’zbekiston bo’ylab</p></div>
+  <div id="dots"><i style="--t:3.0s"></i><i style="--t:5.25s"></i><i style="--t:7.5s"></i><i style="--t:9.75s"></i></div>
+
+  <div id="end"><div class="a">Hoziroq</div><div class="b goldtext">obuna bo’ling!</div>
+    <span class="pill">@azelle_boutique_</span><div class="c">Buyurtma uchun — Direct’ga yozing 💌</div></div>
+  <div id="sparks" class="abs"></div>
+  <div id="vign"></div>
+</div>
+<script src="brand/brand.js"></script>
+<script>
+petals($('petals'), 22, 0.2);
+sparks($('sparks'), 12, [120, 700, 960, 1400], 12.8);
+</script></body></html>

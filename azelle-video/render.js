@@ -1,4 +1,4 @@
-// Renders index.html frame-by-frame to JPEGs: node render.js <outDir> [fps] [duration_s] [only_times_csv]
+// Renders an HTML animation frame-by-frame to JPEGs: PAGE=v1_ochilish.html node render.js <outDir> [fps] [duration_s] [only_times_csv]
 const { chromium } = require('playwright');
 const path = require('path');
 const fs = require('fs');
@@ -11,7 +11,7 @@ const fs = require('fs');
   fs.mkdirSync(out, { recursive: true });
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
-  await page.goto('file://' + path.resolve(__dirname, 'index.html'));
+  await page.goto('file://' + path.resolve(__dirname, process.env.PAGE || 'index.html'));
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(300);
   const times = only || Array.from({ length: Math.round(fps * dur) }, (_, i) => i / fps);

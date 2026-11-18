@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8"><title>Azelle — 1. Ochilish</title>
+<link rel="stylesheet" href="brand/brand.css">
+<style>
+#swoosh{position:absolute;left:0;top:560px;width:1080px;height:500px}
+#swoosh path{fill:none;stroke:url(#gg);stroke-width:10;stroke-linecap:round;stroke-dasharray:2000;stroke-dashoffset:2000;
+  animation:draw 1.3s ease-in-out .9s forwards, fadeOut .5s ease 2.6s forwards}
+#logoWrap{position:absolute;left:90px;top:640px;width:900px;
+  animation:logoUp 1s cubic-bezier(.6,0,.2,1) 5.4s both, logoBack 1s cubic-bezier(.6,0,.2,1) 12.6s forwards}
+@keyframes logoUp{from{transform:none}to{transform:translateY(-330px) scale(.78)}}
+@keyframes logoBack{from{transform:translateY(-330px) scale(.78)}to{transform:translateY(-60px) scale(1)}}
+#logo{animation:reveal 1.5s cubic-bezier(.5,0,.2,1) 1.5s both;--sd:3.1s}
+@keyframes reveal{from{clip-path:inset(0 100% 0 0);transform:scale(.92)}to{clip-path:inset(-20% -5% -20% -5%);transform:scale(1)}}
+#handle{position:absolute;top:1140px;left:0;right:0;text-align:center;animation:rise .8s ease 3.6s both, fadeOut .4s ease 5.2s forwards}
+#s2{position:absolute;top:780px;left:0;right:0;text-align:center}
+#s2 .a{font-family:Vibes;font-size:150px;color:var(--em);animation:wipe 1s ease 6.1s both, outUp .5s ease 9.4s forwards}
+#s2 .b{font-size:40px;font-weight:700;letter-spacing:16px;color:var(--gold-d);margin-top:10px;animation:rise .7s ease 6.6s both, outUp .5s ease 9.45s forwards}
+#s2 .c{font-family:Playfair;font-weight:700;font-size:190px;line-height:1.1;margin-top:10px;
+  animation:bang .9s cubic-bezier(.2,1.6,.4,1) 7.0s both, shimmer 2.5s linear infinite, outUp .5s ease 9.5s forwards}
+#feat{position:absolute;left:110px;right:110px;top:770px}
+.f{display:flex;align-items:center;gap:36px;height:190px;padding:0 40px;margin-bottom:34px}
+.f h3{font-family:Playfair;font-weight:700;font-size:52px;color:var(--em)}
+.f p{font-size:32px;color:#8a6a55;margin-top:6px}
+.f:nth-child(1){animation:slideL .7s cubic-bezier(.2,1,.3,1) 9.8s both, fadeOut .4s ease 12.3s forwards}
+.f:nth-child(2){animation:slideL .7s cubic-bezier(.2,1,.3,1) 10.2s both, fadeOut .4s ease 12.35s forwards}
+.f:nth-child(3){animation:slideL .7s cubic-bezier(.2,1,.3,1) 10.6s both, fadeOut .4s ease 12.4s forwards}
+#end{position:absolute;top:1050px;left:0;right:0;text-align:center}
+#end .a{font-family:Playfair;font-style:italic;font-size:62px;color:var(--em);animation:rise .8s ease 13.3s both}
+#end .pill{margin-top:40px;animation:pop .7s ease 13.7s both}
+#end .b{margin-top:34px;font-size:34px;color:#8a6a55;letter-spacing:3px;animation:rise .7s ease 14.0s both}
+</style></head>
+<body><div id="stage">
+  <div id="petals" class="abs"></div>
+  <div id="tTR" class="tul"><img src="brand/tulips_tr.png"></div>
+  <div id="tBL" class="tul"><img src="brand/tulips_bl.png"></div>
+  <svg id="swoosh" viewBox="0 0 1080 500"><defs><linearGradient id="gg"><stop offset="0" stop-color="#94681f"/><stop offset=".5" stop-color="#f1d48a"/><stop offset="1" stop-color="#c99a3e"/></linearGradient></defs>
+    <path d="M60 330 C 160 120, 420 120, 560 300 S 900 420, 1020 200"/></svg>
+  <div id="sparks" class="abs"></div>
+  <div id="logoWrap"><div id="logo" class="logo"><img src="brand/logo.png"><div class="shine"></div></div></div>
+  <div id="handle"><span class="pill">@azelle_boutique_</span></div>
+  <div id="s2"><div class="a">Onlayn do’konimiz</div><div class="b">RASMAN</div><div class="c goldtext">OCHILDI!</div></div>
+  <div id="conf"></div>
+  <div id="feat">
+    <div class="f card"><div class="ic"><svg viewBox="0 0 64 64"><path d="M24 6 L27 16 M40 6 L37 16 M27 16 Q32 20 37 16 L39 28 L50 58 L14 58 L25 28 Z M25 28 L39 28"/></svg></div><div><h3>Yangi kolleksiyalar</h3><p>Eng so’nggi moda trendlari</p></div></div>
+    <div class="f card"><div class="ic"><svg viewBox="0 0 64 64"><path d="M10 24 H54 L50 58 H14 Z M22 24 V18 A10 10 0 0 1 42 18 V24"/></svg></div><div><h3>Sifatli mahsulotlar</h3><p>Hamyonbop narxlarda</p></div></div>
+    <div class="f card"><div class="ic"><svg viewBox="0 0 64 64"><path d="M4 16 H38 V44 H4 Z M38 26 H50 L58 36 V44 H38 M16 50 A5 5 0 1 0 16.01 50 M48 50 A5 5 0 1 0 48.01 50"/></svg></div><div><h3>Yetkazib berish</h3><p>Butun O’zbekiston bo’ylab</p></div></div>
+  </div>
+  <div id="end"><div class="a">Xush kelibsiz!</div><span class="pill">Obuna bo’ling ♡</span><div class="b">Buyurtma uchun — Direct’ga yozing</div></div>
+  <div id="vign"></div>
+</div>
+<script src="brand/brand.js"></script>
+<script>
+petals($('petals'), 24, 0.3);
+sparks($('sparks'), 14, [120, 520, 960, 1150], 3.0);
+confetti($('conf'), 540, 1000, 130, 7.0);
+</script></body></html>
