@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<title>Azelle Boutique — Onlayn do‘kon ochilishi</title>
+<style>
+@font-face{font-family:Playfair;src:url(fonts/playfair-display-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:Playfair;src:url(fonts/playfair-display-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:Playfair;src:url(fonts/playfair-display-latin-400-italic.woff2);font-style:italic}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:Vibes;src:url(fonts/great-vibes-latin-400-normal.woff2)}
+
+:root{
+  --gold:#d9b46c; --gold-l:#f6e1a8; --gold-d:#a77d36;
+  --ink:#0e0b0a; --blush:#f2d4cc; --wine:#6b1d2a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;
+  background:radial-gradient(ellipse 90% 60% at 50% 42%,#2b1f1a 0%,#16110f 55%,#0b0807 100%);
+  font-family:Mont,sans-serif;color:#fff}
+.abs{position:absolute;inset:0}
+.center{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.goldtext{background:linear-gradient(100deg,var(--gold-d) 0%,var(--gold) 25%,var(--gold-l) 45%,#fff7dd 50%,var(--gold-l) 55%,var(--gold) 75%,var(--gold-d) 100%);
+  background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 3s linear infinite}
+@keyframes shimmer{from{background-position:100% 0}to{background-position:-200% 0}}
+
+/* scene wrappers: outer = fade in, inner = fade out */
+.scene{opacity:0}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(1.06)}}
+
+/* ---------- dust ---------- */
+.dust{position:absolute;border-radius:50%;background:var(--gold-l);box-shadow:0 0 8px 2px rgba(246,225,168,.6)}
+@keyframes drift{0%{transform:translate(0,0);opacity:0}15%{opacity:var(--o)}85%{opacity:var(--o)}100%{transform:translate(var(--dx),-420px);opacity:0}}
+
+/* ---------- frame ---------- */
+#frame{position:absolute;inset:70px;border:2px solid rgba(217,180,108,.55);opacity:0;
+  animation:fadeIn 1s ease 3.0s both}
+#frame::after{content:"";position:absolute;inset:14px;border:1px solid rgba(217,180,108,.25)}
+
+/* ---------- scene 1: curtains ---------- */
+#glow{position:absolute;left:50%;top:44%;width:1400px;height:1400px;margin:-700px 0 0 -700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,236,190,.85) 0%,rgba(217,180,108,.35) 30%,rgba(217,180,108,0) 65%);
+  animation:glow 2.2s ease-out 1.7s both}
+@keyframes glow{0%{transform:scale(.1);opacity:0}35%{opacity:1}100%{transform:scale(1.6);opacity:0}}
+.curtain{position:absolute;top:0;width:560px;height:1920px;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 20%,rgba(0,0,0,0) 80%,rgba(0,0,0,.45)),
+    repeating-linear-gradient(90deg,#4a111b 0px,#7d2433 34px,#9a3343 52px,#6a1a27 80px,#40101a 112px);
+  box-shadow:0 0 60px rgba(0,0,0,.8)}
+.curtain::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46px;
+  background:repeating-linear-gradient(90deg,var(--gold-d) 0 10px,var(--gold) 10px 20px,var(--gold-l) 20px 24px)}
+#cL{left:0;animation:openL 1.6s cubic-bezier(.7,0,.25,1) 1.7s both}
+#cR{right:0;animation:openR 1.6s cubic-bezier(.7,0,.25,1) 1.7s both}
+@keyframes openL{from{transform:translateX(0) skewX(0)}50%{transform:translateX(-45%) skewX(4deg)}to{transform:translateX(-102%) skewX(0)}}
+@keyframes openR{from{transform:translateX(0) skewX(0)}50%{transform:translateX(45%) skewX(-4deg)}to{transform:translateX(102%) skewX(0)}}
+#valance{position:absolute;left:0;right:0;top:0;height:150px;
+  background:repeating-radial-gradient(circle at 60px -40px,#7d2433 0 90px,#4a111b 90px 100px);
+  background-size:120px 150px;border-bottom:6px solid var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.6);
+  animation:upAway 1.2s ease-in 2.4s both}
+@keyframes upAway{from{transform:translateY(0)}to{transform:translateY(-110%)}}
+#s1text{animation:s1t 1.9s ease both}
+@keyframes s1t{0%{opacity:0;transform:translateY(30px)}25%{opacity:1;transform:none}80%{opacity:1}100%{opacity:0;transform:scale(1.1)}}
+#s1text .sm{font-size:34px;letter-spacing:14px;color:var(--gold-l);font-weight:600}
+#s1text .big{font-family:Playfair;font-weight:700;font-size:118px;line-height:1.05;margin:26px 0;letter-spacing:4px}
+#s1text .line{width:420px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+
+/* ---------- scene 2: logo ---------- */
+#s2{animation:fadeIn .6s ease 2.7s both}
+#s2in{animation:fadeOut .6s ease-in 7.0s both}
+#mono{position:relative;width:520px;height:520px;margin-top:-120px}
+#mono svg{position:absolute;inset:0}
+#ring1{stroke-dasharray:1414;stroke-dashoffset:1414;animation:draw 1.5s ease-in-out 2.9s forwards}
+#ring2{stroke-dasharray:1257;stroke-dashoffset:1257;animation:draw 1.5s ease-in-out 3.2s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+#monoA{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:Playfair;font-size:300px;font-weight:400;line-height:1;padding-bottom:30px;
+  animation:popIn 1s cubic-bezier(.2,1.4,.4,1) 3.7s both, shimmer 3s linear infinite}
+@keyframes popIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+#brand{display:flex;margin-top:40px}
+#brand span{font-family:Playfair;font-size:140px;letter-spacing:22px;color:#fff;display:inline-block;
+  animation:letter .7s cubic-bezier(.2,1,.3,1) both}
+@keyframes letter{from{opacity:0;transform:translateY(60px) rotateX(80deg);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+#boutique{font-family:Vibes;font-size:130px;padding:0 40px;margin-top:-40px;color:var(--blush);
+  animation:wipe 1.2s ease 4.9s both}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0);opacity:.2}to{clip-path:inset(0 0 0 0);opacity:1}}
+#handle2{margin-top:30px;font-size:42px;letter-spacing:4px;color:var(--gold-l);font-weight:600;
+  padding:16px 44px;border:2px solid rgba(217,180,108,.6);border-radius:60px;
+  animation:rise .8s ease 5.5s both}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+
+/* ---------- scene 3: grand opening ---------- */
+#s3{animation:fadeIn .6s ease 7.4s both}
+#s3in{animation:fadeOut .6s ease-in 11.2s both}
+#s3top{position:absolute;top:330px;left:0;right:0;text-align:center}
+#s3top .k{font-size:34px;letter-spacing:12px;color:var(--gold-l);font-weight:600;animation:rise .8s ease 7.6s both}
+#s3top .onl{font-family:Vibes;font-size:190px;color:var(--blush);line-height:1.1;margin-top:20px;animation:wipe 1s ease 7.9s both}
+#s3top .dk{font-family:Playfair;font-size:118px;font-weight:700;letter-spacing:10px;line-height:1;animation:rise .8s ease 8.3s both}
+#ochildi{position:absolute;top:900px;left:0;right:0;text-align:center;font-family:Playfair;font-weight:700;font-size:200px;line-height:1.1;
+  animation:bang 1s cubic-bezier(.2,1.6,.4,1) 9.25s both, shimmer 2.4s linear infinite}
+@keyframes bang{from{opacity:0;transform:scale(2.6);filter:blur(10px)}to{opacity:1;transform:scale(1);filter:blur(0)}}
+#ribbon{position:absolute;top:1300px;left:0;right:0;height:150px;animation:rise .6s ease 8.0s both}
+.rb{position:absolute;top:40px;height:70px;width:560px;
+  background:linear-gradient(180deg,#9c1e2f 0%,#d8384d 30%,#ff8796 45%,#c42a3f 60%,#7c1422 100%);
+  border-top:4px solid var(--gold);border-bottom:4px solid var(--gold);box-shadow:0 10px 25px rgba(0,0,0,.5)}
+#rbL{left:-20px;transform-origin:0 50%;animation:fallL 1.6s cubic-bezier(.5,0,.8,.6) 9.1s both}
+#rbR{right:-20px;transform-origin:100% 50%;animation:fallR 1.6s cubic-bezier(.5,0,.8,.6) 9.1s both}
+@keyframes fallL{0%{transform:none}40%{opacity:.35}70%{opacity:0}100%{transform:rotate(75deg) translateX(250px);opacity:0}}
+@keyframes fallR{0%{transform:none}40%{opacity:.35}70%{opacity:0}100%{transform:rotate(-75deg) translateX(-250px);opacity:0}}
+#bow{position:absolute;left:50%;top:75px;width:0;height:0;animation:bowFall 1.4s cubic-bezier(.5,0,.9,.5) 9.1s both}
+@keyframes bowFall{from{transform:none}to{transform:translateY(900px) rotate(140deg);opacity:0}}
+#bow i{position:absolute;width:190px;height:140px;top:-70px;border-radius:50% 10% 10% 50%;
+  background:radial-gradient(ellipse at 30% 50%,#ff8796,#c42a3f 60%,#7c1422);border:4px solid var(--gold)}
+#bow i:nth-child(1){left:-190px;transform:rotate(-8deg)}
+#bow i:nth-child(2){left:0;transform:scaleX(-1) rotate(-8deg)}
+#bow b{position:absolute;width:56px;height:70px;left:-28px;top:-35px;border-radius:14px;background:#b0243a;border:4px solid var(--gold-l)}
+#snip{position:absolute;left:540px;top:1375px;width:900px;height:900px;margin:-450px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,250,230,.95) 0%,rgba(246,225,168,.5) 18%,rgba(246,225,168,0) 55%);
+  animation:snip .8s ease-out 9.1s both}
+@keyframes snip{0%{opacity:0;transform:scale(.1)}25%{opacity:1}100%{opacity:0;transform:scale(1.3)}}
+.conf{position:absolute;left:540px;top:1375px;width:22px;height:12px;opacity:0;
+  animation:conf var(--d) cubic-bezier(.15,.7,.4,1) 9.1s both}
+@keyframes conf{
+  0%{opacity:1;transform:translate(0,0) rotate(0)}
+  35%{opacity:1;transform:translate(calc(var(--x)*.8),var(--y)) rotate(calc(var(--r)*.4))}
+  100%{opacity:0;transform:translate(var(--x),calc(var(--y) + 1100px)) rotate(var(--r))}}
+
+/* ---------- scene 4: features ---------- */
+#s4{animation:fadeIn .5s ease 11.6s both}
+#s4in{animation:fadeOut .6s ease-in 15.3s both}
+#s4head{position:absolute;top:300px;left:0;right:0;text-align:center}
+#s4head .a{font-family:Vibes;font-size:120px;color:var(--blush);animation:wipe 1s ease 11.7s both}
+#s4head .b{font-family:Playfair;font-size:74px;font-weight:700;letter-spacing:6px;margin-top:-10px;animation:rise .7s ease 12.0s both}
+.card{position:absolute;left:110px;width:860px;height:200px;border-radius:30px;display:flex;align-items:center;gap:40px;padding:0 50px;
+  background:linear-gradient(120deg,rgba(255,255,255,.09),rgba(255,255,255,.02));
+  border:2px solid rgba(217,180,108,.55);box-shadow:0 20px 50px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.12);
+  animation:slideIn .8s cubic-bezier(.2,1,.3,1) both}
+@keyframes slideIn{from{opacity:0;transform:translateX(320px)}to{opacity:1;transform:none}}
+.ic{flex:0 0 120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 35% 30%,#3a2c22,#1a1310);border:2px solid var(--gold)}
+.ic svg{width:70px;height:70px;fill:none;stroke:var(--gold-l);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-family:Playfair;font-size:54px;font-weight:700;color:#fff;line-height:1.1}
+.card p{font-size:34px;color:var(--gold-l);margin-top:8px;letter-spacing:1px}
+
+/* ---------- scene 5: follow ---------- */
+#s5{animation:fadeIn .6s ease 15.7s both}
+#s5head{position:absolute;top:300px;left:0;right:0;text-align:center}
+#s5head .a{font-family:Vibes;font-size:130px;color:var(--blush);animation:wipe 1s ease 15.8s both}
+#profile{position:absolute;left:110px;top:680px;width:860px;padding:60px 50px 56px;border-radius:40px;
+  background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03));border:2px solid rgba(217,180,108,.5);
+  box-shadow:0 30px 70px rgba(0,0,0,.5);text-align:center;animation:rise .9s cubic-bezier(.2,1,.3,1) 16.1s both}
+#avatar{width:250px;height:250px;margin:0 auto;border-radius:50%;padding:9px;
+  background:conic-gradient(from 200deg,#f9ce34,#ee2a7b,#6228d7,#ee2a7b,#f9ce34)}
+#avatar div{width:100%;height:100%;border-radius:50%;border:7px solid #1b1411;background:radial-gradient(circle at 40% 35%,#3a2c22,#120d0b);
+  display:flex;align-items:center;justify-content:center;font-family:Playfair;font-size:150px;padding-bottom:16px}
+#pname{font-size:52px;font-weight:700;margin-top:30px;letter-spacing:1px}
+#pdesc{font-size:34px;color:#cfc2b3;margin:10px 0 44px}
+#stats{display:flex;justify-content:space-around;margin:40px 0 44px;font-size:30px;color:#cfc2b3}
+#stats b{display:block;font-size:46px;color:#fff;font-weight:700}
+#btn{position:relative;height:110px;border-radius:24px;font-size:44px;font-weight:700;overflow:hidden}
+#btn .f,#btn .d{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:24px}
+#btn .f{background:#0095f6}
+#btn .d{background:#3a3330;color:#fff;opacity:0;animation:fadeIn .25s ease 17.75s both}
+#btn{animation:press .35s ease 17.55s both}
+@keyframes press{0%{transform:scale(1)}50%{transform:scale(.94)}100%{transform:scale(1)}}
+#tap{position:absolute;left:660px;top:1236px;width:90px;height:90px;margin:-45px;border-radius:50%;
+  background:rgba(255,255,255,.55);border:4px solid #fff;opacity:0;animation:tap 1.4s ease 16.9s both}
+@keyframes tap{0%{opacity:0;transform:translate(160px,220px) scale(1)}45%{opacity:1;transform:translate(0,0) scale(1)}55%{transform:scale(.7)}70%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.4)}}
+.heart{position:absolute;bottom:260px;width:70px;height:70px;opacity:0;animation:heart var(--d) ease-out both}
+.heart svg{width:100%;height:100%}
+@keyframes heart{0%{opacity:0;transform:translate(0,0) scale(.3)}15%{opacity:1;transform:translate(calc(var(--x)*.2),-120px) scale(1)}
+  100%{opacity:0;transform:translate(var(--x),-1000px) scale(.8) rotate(var(--r))}}
+#cta{position:absolute;top:1440px;left:0;right:0;text-align:center}
+#cta .x{font-size:38px;letter-spacing:6px;color:var(--gold-l);font-weight:600;animation:rise .8s ease 18.1s both}
+#cta .y{font-family:Playfair;font-style:italic;font-size:64px;margin-top:22px;animation:rise .8s ease 18.4s both}
+#vign{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="dust" class="abs"></div>
+  <div id="frame"></div>
+
+  <!-- SCENE 2: logo -->
+  <div id="s2" class="abs scene"><div id="s2in" class="abs center">
+    <div id="mono">
+      <svg viewBox="0 0 520 520">
+        <circle id="ring1" cx="260" cy="260" r="225" fill="none" stroke="#d9b46c" stroke-width="4"/>
+        <circle id="ring2" cx="260" cy="260" r="200" fill="none" stroke="#f6e1a8" stroke-width="1.5" opacity=".7"/>
+      </svg>
+      <div id="monoA" class="goldtext">A</div>
+    </div>
+    <div id="brand"></div>
+    <div id="boutique">boutique</div>
+    <div id="handle2">@azelle_boutique_</div>
+  </div></div>
+
+  <!-- SCENE 3: opening -->
+  <div id="s3" class="abs scene"><div id="s3in" class="abs">
+    <div id="s3top">
+      <div class="k">RASMAN E’LON QILAMIZ</div>
+      <div class="onl">Onlayn</div>
+      <div class="dk">DO’KONIMIZ</div>
+    </div>
+    <div id="ochildi" class="goldtext">OCHILDI!</div>
+    <div id="ribbon">
+      <div id="rbL" class="rb"></div><div id="rbR" class="rb"></div>
+      <div id="bow"><i></i><i></i><b></b></div>
+    </div>
+    <div id="snip"></div>
+    <div id="confetti"></div>
+  </div></div>
+
+  <!-- SCENE 4: features -->
+  <div id="s4" class="abs scene"><div id="s4in" class="abs">
+    <div id="s4head"><div class="a">Sizni nimalar</div><div class="b">KUTMOQDA?</div></div>
+    <div class="card" style="top:640px;animation-delay:12.3s">
+      <div class="ic"><svg viewBox="0 0 64 64"><path d="M24 6 L27 16 M40 6 L37 16 M27 16 Q32 20 37 16 L39 28 L50 58 L14 58 L25 28 Z M25 28 L39 28"/></svg></div>
+      <div><h3>Yangi kolleksiyalar</h3><p>Eng so’nggi moda trendlari</p></div>
+    </div>
+    <div class="card" style="top:880px;animation-delay:12.75s">
+      <div class="ic"><svg viewBox="0 0 64 64"><path d="M10 24 H54 L50 58 H14 Z M22 24 V18 A10 10 0 0 1 42 18 V24"/></svg></div>
+      <div><h3>Sifatli mahsulotlar</h3><p>Hamyonbop narxlarda</p></div>
+    </div>
+    <div class="card" style="top:1120px;animation-delay:13.2s">
+      <div class="ic"><svg viewBox="0 0 64 64"><path d="M4 16 H38 V44 H4 Z M38 26 H50 L58 36 V44 H38 M16 50 A5 5 0 1 0 16.01 50 M48 50 A5 5 0 1 0 48.01 50"/></svg></div>
+      <div><h3>Yetkazib berish</h3><p>Butun O’zbekiston bo’ylab</p></div>
+    </div>
+    <div class="card" style="top:1360px;animation-delay:13.65s">
+      <div class="ic"><svg viewBox="0 0 64 64"><path d="M58 6 L4 28 L26 36 L34 58 Z M58 6 L26 36"/></svg></div>
+      <div><h3>Oson buyurtma</h3><p>Direct’ga yozing</p></div>
+    </div>
+  </div></div>
+
+  <!-- SCENE 5: follow -->
+  <div id="s5" class="abs scene">
+    <div id="s5head"><div class="a">Bizga qo’shiling!</div></div>
+    <div id="profile">
+      <div id="avatar"><div><span class="goldtext">A</span></div></div>
+      <div id="pname">azelle_boutique_</div>
+      <div id="pdesc">Onlayn butik • Yangi ochildi ✨</div>
+      <div id="btn"><div class="f">Obuna bo’lish</div><div class="d">Obuna bo’lindi ✓</div></div>
+    </div>
+    <div id="tap"></div>
+    <div id="hearts"></div>
+    <div id="cta">
+      <div class="x">OBUNA BO’LING • ULASHING</div>
+      <div class="y">Xush kelibsiz!</div>
+    </div>
+  </div>
+
+  <!-- SCENE 1: curtains (on top) -->
+  <div id="glow"></div>
+  <div id="cL" class="curtain"></div>
+  <div id="cR" class="curtain"></div>
+  <div id="valance"></div>
+  <div id="s1text" class="abs center">
+    <div class="sm">AZELLE BOUTIQUE</div>
+    <div class="line" style="margin-top:30px"></div>
+    <div class="big goldtext">KATTA<br>OCHILISH</div>
+    <div class="line"></div>
+  </div>
+  <div id="vign"></div>
+</div>
+
+<script>
+// deterministic pseudo-random
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+// gold dust
+const dust = document.getElementById('dust');
+for (let i = 0; i < 70; i++) {
+  const d = document.createElement('div'); d.className = 'dust';
+  const s = 2 + rnd() * 6;
+  Object.assign(d.style, {width: s+'px', height: s+'px', left: rnd()*1080+'px', top: 300 + rnd()*1700+'px'});
+  d.style.setProperty('--dx', (rnd()*160-80)+'px');
+  d.style.setProperty('--o', (0.3 + rnd()*0.6).toFixed(2));
+  d.style.animation = `drift ${5 + rnd()*5}s linear ${-rnd()*10}s infinite`;
+  dust.appendChild(d);
+}
+
+// brand letters
+const brand = document.getElementById('brand');
+'AZELLE'.split('').forEach((c, i) => {
+  const s = document.createElement('span'); s.textContent = c;
+  s.style.animationDelay = (4.1 + i * 0.1) + 's'; brand.appendChild(s);
+});
+
+// confetti
+const colors = ['#d9b46c','#f6e1a8','#ffffff','#f2d4cc','#e0475c','#a77d36'];
+const conf = document.getElementById('confetti');
+for (let i = 0; i < 140; i++) {
+  const c = document.createElement('div'); c.className = 'conf';
+  const ang = -Math.PI/2 + (rnd()-0.5) * Math.PI * 1.3, v = 300 + rnd()*800;
+  c.style.setProperty('--x', Math.cos(ang)*v + 'px');
+  c.style.setProperty('--y', Math.sin(ang)*v + 'px');
+  c.style.setProperty('--r', (rnd()*1440-720) + 'deg');
+  c.style.setProperty('--d', (2 + rnd()*1.6) + 's');
+  c.style.background = colors[i % colors.length];
+  if (rnd() < .3) { c.style.width = '14px'; c.style.height = '14px'; c.style.borderRadius = '50%'; }
+  conf.appendChild(c);
+}
+
+// hearts
+const hearts = document.getElementById('hearts');
+const hc = ['#ff3b5c','#ff6b81','#f2d4cc','#d9b46c'];
+for (let i = 0; i < 16; i++) {
+  const h = document.createElement('div'); h.className = 'heart';
+  h.style.left = (560 + rnd()*380) + 'px';
+  h.style.setProperty('--x', (rnd()*300-200) + 'px');
+  h.style.setProperty('--r', (rnd()*60-30) + 'deg');
+  h.style.setProperty('--d', (2 + rnd()*1.2) + 's');
+  h.style.animationDelay = (17.8 + i * 0.14) + 's';
+  const s = 0.6 + rnd()*0.7; h.style.width = h.style.height = 70*s + 'px';
+  h.innerHTML = `<svg viewBox="0 0 24 24"><path fill="${hc[i%hc.length]}" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>`;
+  hearts.appendChild(h);
+}
+
+// frame control for the renderer; in a normal browser it just plays.
+window.seek = (ms) => document.getAnimations().forEach(a => { a.pause(); a.currentTime = ms; });
+</script>
+</body>
+</html>
